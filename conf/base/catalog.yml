@@ -1,0 +1,7 @@
+train_data:
+  type: pandas.CSVDataSet
+  filepath: 01_raw/fraudTrain.csv
+
+test_data:
+  type: pandas.CSVDataSet
+  filepath: 01_raw/fraudTest.csv
