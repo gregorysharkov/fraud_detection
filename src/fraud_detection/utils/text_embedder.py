@@ -1,4 +1,4 @@
-from fraud_detection.utils.encoder_utils import _process_list_of_sentences, _process_single_sentence, _train_fast_text_model
+from fraud_detection.utils.encoder_utils import process_list_of_sentences, process_single_sentence, train_fast_text_model
 
 
 import numpy as np
@@ -30,7 +30,9 @@ class TextEmbedder:
 
     @cached_property
     def processed_sentences(self):
-        return _process_list_of_sentences(self.sentences).apply(lambda x: ' '.join(x)).tolist()
+        processed_sentences = process_list_of_sentences(self.sentences)
+        processed_sentences = processed_sentences.apply(lambda x: ' '.join(x))
+        return processed_sentences.tolist()
 
     @property
     def max_sentence_length(self):
@@ -47,7 +49,7 @@ class TextEmbedder:
         Returns:
         - None
         """
-        self.model = _train_fast_text_model(self.processed_sentences, **self.model_settings)
+        self.model = train_fast_text_model(self.processed_sentences, **self.model_settings)
         self.model.wv[""] = np.array([0.] * self.vector_size)
 
     def transform_sentence(self, sentence: str) -> list[float]:
@@ -61,4 +63,4 @@ class TextEmbedder:
         - list[float]: A list of float values representing the embedded sentence. The length of the list is determined by the
         maximum sentence length and the vector size of the FastText model.
         """
-        return _process_single_sentence(sentence, self.max_sentence_length, self.model)
+        return process_single_sentence(sentence, self.max_sentence_length, self.model)
