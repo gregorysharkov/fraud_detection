@@ -87,5 +87,6 @@ def process_single_sentence(sentence: str, max_sentence_length: int, fast_model:
     return_sentence = clean_column_value(sentence)
     return_sentence = pad_sentence(return_sentence, max_sentence_length)
     embedded_sentences = embed_sentence(return_sentence, fast_model)
-    return [' '.join(map(str, x)) for x in embedded_sentences]
+    return [x for x in embedded_sentences]
+    # return [' '.join(map(str, x)) for x in embedded_sentences]
 
