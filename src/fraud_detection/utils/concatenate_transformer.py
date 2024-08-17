@@ -1,9 +1,12 @@
+from typing import Any, Iterable
 import numpy as np
 
 from sklearn.base import BaseEstimator, TransformerMixin
 
 
 class ConcatenateTransformer(BaseEstimator, TransformerMixin):
+    """this transformer is responsible to wrap the flatten nested list function"""
+    
     def fit(self, X, y=None):
         return self
     
@@ -15,7 +18,10 @@ class ConcatenateTransformer(BaseEstimator, TransformerMixin):
         return return_list
 
 
-def flatten_nested_list(nested_list):
+def flatten_nested_list(nested_list: Iterable) -> list[Any]:
+    """
+    Function flatterns a nested list
+    """
     flattened_list = []
     for element in nested_list:
         element_items = []

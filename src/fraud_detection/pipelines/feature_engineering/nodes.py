@@ -5,7 +5,10 @@ import fraud_detection.utils.fraud_selection_utils as fsu
 
 def prepare_train_data(raw_data: pd.DataFrame, train_set_params: dict) -> pd.DataFrame:
     """
-    function prepares training data
+    function prepares training data by selecting true and false windows for different
+    clients in the population:
+        for fraudulent transaction it will select n transactions before the transaction
+        for non-fradulent clients it will select random transactions
 
     Args:
         raw_data (pd.DataFrame): train data used to build the training dataset
