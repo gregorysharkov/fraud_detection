@@ -3,6 +3,7 @@ from sklearn.pipeline import FeatureUnion, Pipeline
 from sklearn.preprocessing import FunctionTransformer, StandardScaler
 
 from fraud_detection.utils.fast_text_encoder import FastTextEncoder
+from fraud_detection.utils.concatenate_transformer import ConcatenateTransformer
 
 
 # TODO: move the fast model settings to the configuration file
@@ -58,10 +59,11 @@ def get_row_preprocessor(
             for x in num_columns
         ]
     )
-    feature_union = FeatureUnion(transformer_list=preprocessors, n_jobs=1)
+    feature_union = FeatureUnion(transformer_list=preprocessors, n_jobs=1, verbose=True, verbose_feature_names_out=True)
 
     return Pipeline(
         steps=[
             ("combined_embeddings", feature_union),
+            ("concatenate_features", ConcatenateTransformer()),
         ],
     )
