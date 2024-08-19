@@ -1,0 +1,20 @@
+train_set_parameters:
+  seed: 20240801
+  n_true: 3000
+  n_false: 3000
+  window_size: 20
+  max_normal_samples: 2979
+  columns:
+    id_columns:
+      - cc_num
+      - window_id
+    feature_columns:
+      - merchant
+      - category
+      - amt
+      - gender
+      - city
+      - state
+      - city_pop
+      - job
+    
