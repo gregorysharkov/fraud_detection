@@ -4,6 +4,8 @@ from sklearn.preprocessing import FunctionTransformer, StandardScaler
 
 from fraud_detection.utils.fast_text_encoder import FastTextEncoder
 from fraud_detection.utils.concatenate_transformer import ConcatenateTransformer
+from fraud_detection.utils.dataframe_transformer import DataFrameToListTransformer
+from fraud_detection.utils.row_combination_utils import combine_features, select_single_label
 
 
 # TODO: move the fast model settings to the configuration file
@@ -65,5 +67,37 @@ def get_row_preprocessor(
         steps=[
             ("combined_embeddings", feature_union),
             ("concatenate_features", ConcatenateTransformer()),
+            ("convert_to_dataframe", DataFrameToListTransformer()),
         ],
     )
+
+
+# def get_combined_row_preprocessor(
+#     cat_columns: list[str],
+#     num_columns: list[str],
+#     embedder_settings: dict,
+# ) -> Pipeline:
+#     """
+#     Generates a pipeline to preprocess the incoming data and combine features and labels.
+
+#     Args:
+#         cat_columns: List of columns to be treated as categorical columns.
+#         num_columns: List of columns to be treated as numerical columns.
+#         embedder_settings: Settings for the TextEmbedder.
+
+#     Returns:
+#         A pipeline that transforms a single row into an array after embedding and combining features and labels.
+#     """
+
+
+#     row_encoder = get_row_preprocessor(cat_columns, num_columns, embedder_settings)
+#     feature_aggregator = FunctionTransformer(
+#         func=combine_features,
+#         validate=False,
+#     )
+
+#     return Pipeline(
+#         steps=[
+#             ("row_preprocessor", row_encoder),
+#         ]
+#     )

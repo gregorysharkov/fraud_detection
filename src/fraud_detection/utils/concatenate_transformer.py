@@ -34,3 +34,4 @@ def flatten_nested_list(nested_list: Iterable) -> list[Any]:
         flattened_list.extend(element_items)
         
     return flattened_list
+
