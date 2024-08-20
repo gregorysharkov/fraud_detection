@@ -12,6 +12,7 @@ class DataFrameTransformer(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X):
+        print(f"{pd.DataFrame(X)=}")
         transformed_data = (
             pd.DataFrame(X)
             .apply(lambda row: _transform_row(row, self.id_columns), axis=1)
@@ -26,5 +27,4 @@ def _transform_row(row, id_cols: list[str]) -> tuple[list, Any, Any]:
     row = row.values.tolist()
     features = row[:-len(id_cols)]
     id_values = row[-len(id_cols):]
-    print(f"Features: {features}, ID values: {id_values}\nrow: {row}")
     return (features, *id_values)
