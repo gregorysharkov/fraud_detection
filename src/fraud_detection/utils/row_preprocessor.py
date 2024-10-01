@@ -16,7 +16,7 @@ FAST_MODEL_SETTINGS = {
     "workers": 4,
 }
 
-ID_COLS = ["cc_num", "window_id", "label",]
+ID_COLS = ["window_id", "label",]
 
 
 def get_row_preprocessor(
@@ -117,7 +117,7 @@ def _generate_id_columns_pipeline(id_cols: list[str]) -> list[tuple[str, Pipelin
             f"id_pipeline_{x}",
             Pipeline(
                 [
-                    (f"selector_{x}", FunctionTransformer(lambda X: X[id_cols], validate=False)),
+                    (f"selector_{x}", FunctionTransformer(lambda X: X[x], validate=False)),
                 ]
             )
         )
