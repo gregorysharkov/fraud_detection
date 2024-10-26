@@ -1,0 +1,11 @@
+raw_data:
+  type: pickle.PickleDataset
+  filepath: data/01_raw/cora_dataset.pq
+
+device:
+  type: kedro.io.MemoryDataset
+
+trained_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/model.pq
+  versioned: True

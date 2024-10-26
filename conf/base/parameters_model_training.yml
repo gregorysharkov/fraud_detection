@@ -1,0 +1,10 @@
+# This is a boilerplate parameters config generated for pipeline 'model_training'
+# using Kedro 0.19.9.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.9/configuration/parameters.html
+train_params:
+  hidden_size: 64
+  learning_rate: .001
+  weight_decay: 5e-4
+  num_epochs: 200
