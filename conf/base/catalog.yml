@@ -2,6 +2,34 @@ raw_data:
   type: pickle.PickleDataset
   filepath: data/01_raw/cora_dataset.pq
 
+raw_features:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/elliptic_btc/BTC/elliptic_txs_features.csv
+
+raw_labels:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/elliptic_btc/BTC/elliptic_txs_classes.csv
+
+client_mapper:
+  type: kedro.io.MemoryDataset
+
+raw_edges:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/elliptic_btc/BTC/elliptic_txs_edgelist.csv
+
+processed_features:
+  type: kedro.io.MemoryDataset
+
+processed_labels:
+  type: kedro.io.MemoryDataset
+
+processed_edges:
+  type: kedro.io.MemoryDataset
+
+processed_data:
+  type: pickle.PickleDataset
+  filepath: data/02_intermediate/processed_data.pq
+
 device:
   type: kedro.io.MemoryDataset
 

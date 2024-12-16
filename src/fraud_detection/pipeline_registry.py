@@ -1,7 +1,5 @@
 """Project pipelines."""
 
-from typing import Dict
-
 from kedro.pipeline import Pipeline
 
 from fraud_detection.pipelines.data_preprocessing.pipeline import (
@@ -12,7 +10,7 @@ from fraud_detection.pipelines.model_training.pipeline import (
 )
 
 
-def register_pipelines() -> Dict[str, Pipeline]:
+def register_pipelines() -> dict[str, Pipeline]:
     """Register the project's pipelines.
 
     Returns:
