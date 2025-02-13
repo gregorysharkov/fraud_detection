@@ -37,7 +37,13 @@ def create_pipeline(**kwargs) -> Pipeline:
             ),
             node(
                 func=nd.collect_training_data,
-                inputs=["preprocessed_labels", "preprocessed_edges", "preprocessed_features"],
+                inputs=[
+                    "preprocessed_labels",
+                    "preprocessed_edges",
+                    "preprocessed_features",
+                    "params:train_ratio",
+                    "params:val_ratio",
+                ],
                 outputs="processed_data",
                 name="collect_training_data",
             ),

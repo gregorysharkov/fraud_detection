@@ -5,6 +5,8 @@ raw_data:
 raw_features:
   type: pandas.CSVDataset
   filepath: data/01_raw/elliptic_btc/BTC/elliptic_txs_features.csv
+  load_args:
+    header: null
 
 raw_labels:
   type: pandas.CSVDataset

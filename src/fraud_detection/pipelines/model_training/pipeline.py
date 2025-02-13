@@ -16,7 +16,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             ),
             node(
                 func=train_model,
-                inputs=["raw_data", "params:train_params", "device"],
+                inputs=["processed_data", "params:train_params", "device"],
                 outputs="trained_model",
                 name="train_model",
             ),
